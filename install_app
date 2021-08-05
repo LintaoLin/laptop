@@ -1,6 +1,9 @@
 #!/bin/bash
 
 HOMEBREW_NO_AUTO_UPDATE=1
+
+custom_alias_file=$(echo ~/custom_alias)
+
 # 安装iterm2
 read -p "即将安装:iterm2 [y/n](默认为y)" IS_INSTALL
 if [ "$IS_INSTALL" == "y" ] || [ "$IS_INSTALL" == "" ]
@@ -25,10 +28,10 @@ if [ "$IS_INSTALL" == "y" ] || [ "$IS_INSTALL" == "" ]
 then
   	echo "开始安装 tldr"
   	brew install tldr
-	if ! grep "alias help=\"tldr\"" ~/.zshrc; 
+	if ! grep "alias help=\"tldr\"" $custom_alias_file; 
 	then
 		# 给配置里加一个别名,以后只需要执行 help xxx就能看到这个命令是怎么用的了.
-		echo "alias help=\"tldr\"" >> ~/.zshrc
+		echo "alias help=\"tldr\"" >> $custom_alias_file
 	fi
 fi
 
