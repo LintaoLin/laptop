@@ -116,12 +116,14 @@ custom_alias_file=$(echo ~/custom_alias)
 bash_profile_file=$(echo ~/.bash_profile)
 if [[ ! -f "$custom_alias_file" ]]; then
   touch $custom_alias_file
-  if !grep 'source.*bash_profile' ~/.zshrc
+  if ! grep 'source.*bash_profile' ~/.zshrc
   then
     echo "source $bash_profile_file" >> ~/.zshrc
   fi
-  if !grep "source.*custom_alias" $bash_profile_file
+  if ! grep "source.*custom_alias" $bash_profile_file
+  then
   echo "source $custom_alias_file" >> $bash_profile_file
+  fi
 fi
 
 
